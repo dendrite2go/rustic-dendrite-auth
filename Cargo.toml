@@ -3,8 +3,14 @@ name = "dendrite_auth"
 version = "0.1.0"
 authors = ["Jeroen van Maanen"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "Support for JWT based authentication / authorization in rustic-dendrite"
+readme = "README.md"
+homepage = "https://github.com/dendrite2go/rustic-dendrite-auth"
+repository = "https://github.com/dendrite2go/rustic-dendrite-auth"
+license = "MIT"
+keywords = ["event-sourcing", "CQRS", "AxonServer", "JWT"]
+categories = ["web-programming"]
+include = ["/src/**/*", "/proto/**/*", "/Cargo.*", "/build.rs", "/README.md", "/LICENSE"]
 
 [dependencies]
 anyhow = "^1.0"
