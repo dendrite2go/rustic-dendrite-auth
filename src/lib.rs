@@ -2,6 +2,8 @@ pub mod dendrite_config;
 
 use anyhow::{Context,Result,anyhow};
 use core::convert::TryFrom;
+use dendrite::register;
+use dendrite::axon_utils::{AsyncApplicableTo, AxonServerHandle, TheHandlerRegistry, TokenStore, empty_handler_registry, event_processor};
 use dendrite_macros;
 use jwt::{Header, Token, VerifyWithKey, AlgorithmType, Error};
 use jwt::algorithm::AlgorithmType::Rs256;
@@ -19,7 +21,6 @@ use sshkeys;
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use tonic;
-use dendrite::axon_utils::{AsyncApplicableTo, AxonServerHandle, TheHandlerRegistry, TokenStore, empty_handler_registry, event_processor};
 use crate::dendrite_config::{CredentialsAddedEvent, CredentialsRemovedEvent, KeyManagerAddedEvent, KeyManagerRemovedEvent, TrustedKeyAddedEvent, TrustedKeyRemovedEvent};
 
 const SEPARATOR: &str = ".";
@@ -72,12 +73,12 @@ pub async fn process_events(axon_server_handle : AxonServerHandle) {
 async fn internal_process_events(axon_server_handle : AxonServerHandle) -> Result<()> {
     let mut event_handler_registry: TheHandlerRegistry<AuthQueryModel,Option<AuthQueryModel>> = empty_handler_registry();
 
-    event_handler_registry.register(&handle_trusted_key_added_event)?;
-    event_handler_registry.register(&handle_trusted_key_removed_event)?;
-    event_handler_registry.register(&handle_key_manager_added_event)?;
-    event_handler_registry.register(&handle_key_manager_removed_event)?;
-    event_handler_registry.register(&handle_credentials_added_event)?;
-    event_handler_registry.register(&handle_credentials_removed_event)?;
+    register!(event_handler_registry, handle_trusted_key_added_event)?;
+    register!(event_handler_registry, handle_trusted_key_removed_event)?;
+    register!(event_handler_registry, handle_key_manager_added_event)?;
+    register!(event_handler_registry, handle_key_manager_removed_event)?;
+    register!(event_handler_registry, handle_credentials_added_event)?;
+    register!(event_handler_registry, handle_credentials_removed_event)?;
 
     event_processor(axon_server_handle, AUTH.clone(), event_handler_registry).await.context("Error while handling commands")
 }
