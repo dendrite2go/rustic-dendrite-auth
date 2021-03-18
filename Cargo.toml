@@ -1,6 +1,6 @@
 [package]
 name = "dendrite_auth"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Jeroen van Maanen"]
 edition = "2018"
 description = "Support for JWT based authentication / authorization in rustic-dendrite"
@@ -14,7 +14,7 @@ include = ["/src/**/*", "/proto/**/*", "/Cargo.*", "/build.rs", "/README.md", "/
 
 [dependencies]
 anyhow = "^1.0"
-dendrite = { path = "../rustic-dendrite" } # "^0.4" # { path = "../rustic-dendrite" } #
+dendrite = "0.4.1" # { path = "../rustic-dendrite" } # { path = "../rustic-dendrite" } #
 dendrite_macros = "0.1.0" # { path = "../rustic-dendrite-macros" } #
 jwt = "^0.13"
 lazy_static = "^1.4"
