@@ -3,6 +3,7 @@ pub mod dendrite_config;
 use anyhow::{Context,Result,anyhow};
 use core::convert::TryFrom;
 use dendrite::register;
+use dendrite::axon_server::event::Event;
 use dendrite::axon_utils::{AsyncApplicableTo, AxonServerHandle, TheHandlerRegistry, TokenStore, empty_handler_registry, event_processor};
 use dendrite_macros;
 use jwt::{Header, Token, VerifyWithKey, AlgorithmType, Error};
@@ -71,7 +72,7 @@ pub async fn process_events(axon_server_handle : AxonServerHandle) {
 }
 
 async fn internal_process_events(axon_server_handle : AxonServerHandle) -> Result<()> {
-    let mut event_handler_registry: TheHandlerRegistry<AuthQueryModel,Option<AuthQueryModel>> = empty_handler_registry();
+    let mut event_handler_registry: TheHandlerRegistry<AuthQueryModel,Event,Option<AuthQueryModel>> = empty_handler_registry();
 
     register!(event_handler_registry, handle_trusted_key_added_event)?;
     register!(event_handler_registry, handle_trusted_key_removed_event)?;

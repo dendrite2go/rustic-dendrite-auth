@@ -168,9 +168,9 @@ dependencies = [
 
 [[package]]
 name = "dendrite"
-version = "0.4.3"
+version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "943f42aff0e7ff4771d9efe5a1210b7258ec32582dd5cebfb10fad392016b1d7"
+checksum = "d415b292a6c151ffbb7617f0307d5b3a64712503cd42dd0a6d647c3ff05e5340"
 dependencies = [
  "anyhow",
  "async-lock",
@@ -189,7 +189,7 @@ dependencies = [
 
 [[package]]
 name = "dendrite_auth"
-version = "0.2.3"
+version = "0.3.0"
 dependencies = [
  "anyhow",
  "dendrite",
@@ -210,12 +210,13 @@ dependencies = [
 
 [[package]]
 name = "dendrite_macros"
-version = "0.1.0"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3ae84e21804489302596786e01fd19c08d8af811454d7cc70c3735414fb4112f"
+checksum = "2473bedb9695bc88fffee3b97689198d18733581bcb4ce0def36faca4c91f9c7"
 dependencies = [
  "anyhow",
  "log",
+ "proc-macro2",
  "quote",
  "syn",
 ]
@@ -748,9 +749,9 @@ checksum = "bc881b2c22681370c6a780e47af9840ef841837bc98118431d4e1868bd0c1086"
 
 [[package]]
 name = "proc-macro2"
-version = "1.0.24"
+version = "1.0.26"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1e0704ee1a7e00d7bb417d0770ea303c1bccbabf0ef1667dae92b5967f5f8a71"
+checksum = "a152013215dca273577e18d2bf00fa862b89b24169fb78c4c95aeb07992c9cec"
 dependencies = [
  "unicode-xid",
 ]
