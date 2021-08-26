@@ -14,7 +14,7 @@ include = ["/src/**/*", "/proto/**/*", "/Cargo.*", "/build.rs", "/README.md", "/
 
 [dependencies]
 anyhow = "^1.0"
-dendrite = "0.6.1" # { path = "../rustic-dendrite" } #
+dendrite = "0.6.2" # { path = "../rustic-dendrite" } #
 dendrite_macros = "0.3.0" # { path = "../rustic-dendrite-macros" } #
 jwt = "^0.13"
 lazy_static = "^1.4"
